@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=Merriweather:wght@400;700;900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=Merriweather:wght@400;700;900&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,29 +7,40 @@
 
 @layer base {
   :root {
-    --background: 40 20% 96%;
-    --foreground: 30 15% 15%;
 
-    --card: 40 25% 94%;
-    --card-foreground: 30 15% 15%;
+    --trail-green: 146 43% 25%; /* #244b35 pine teal */
+    --trail-purple: 270 20% 31%; /* #534462 vintage grape */
+    --trail-brown: 30 40% 40%; /* #7E5C3A olive wood*/
+    --trail-gray: 30 8% 60%; /* #a19991 grey olive*/
+    --trail-celadon: 151 34% 79%; /* #b6dbc9 celadon */
+    --trail-light: 60 100% 99%; /* ##FFFBF5 floral white */
+    --trail-dark: 44 38% 6%; /* #141109 pitch black */
+    --trail-red: 0 61% 40%; /* #141109 brown red */
+    
+    --background: var(--trail-light);
+    --foreground: var(--trail-dark);
+
+    --card: var(--trail-light);
+    --card-foreground: var(--trail-dark);
+    --card-border: var(--trail-brown);
 
     --popover: 40 20% 96%;
     --popover-foreground: 30 15% 15%;
 
-    --primary: 145 35% 32%;
-    --primary-foreground: 40 30% 96%;
+    --primary: var(--trail-green);
+    --primary-foreground: var(--trail-light);
 
-    --secondary: 270 18% 45%;
-    --secondary-foreground: 40 30% 96%;
+    --secondary: var(--trail-purple);
+    --secondary-foreground: var(--trail-light);
 
-    --muted: 35 15% 88%;
-    --muted-foreground: 30 10% 45%;
+    --muted: 35 15% 88%; 
+    --muted-foreground: 44 30% 30%; 
 
-    --accent: 30 40% 40%;
-    --accent-foreground: 40 30% 96%;
+    --accent: var(--trail-brown);
+    --accent-foreground: var(--trail-light);
 
-    --destructive: 0 65% 50%;
-    --destructive-foreground: 40 30% 96%;
+    --destructive: var(--trail-red);
+    --destructive-foreground: var(--trail-light);
 
     --border: 35 18% 82%;
     --input: 35 18% 82%;
@@ -45,10 +57,8 @@
     --sidebar-border: 145 18% 30%;
     --sidebar-ring: 145 35% 42%;
 
-    --trail-green: 145 35% 32%;
-    --trail-purple: 270 18% 45%;
-    --trail-brown: 30 40% 40%;
-    --trail-gray: 30 8% 60%;
+
+  
   }
 
   .dark {
@@ -102,6 +112,6 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-trail-gray/35 text-foreground font-sans;
   }
 }

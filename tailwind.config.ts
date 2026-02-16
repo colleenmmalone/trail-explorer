@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Cabin", "sans-serif"],
-        display: ["Merriweather", "serif"],
+        sans: ["Funnel Sans", "sans-serif"],
+        display: ["MuseoModerno", "serif"],
+        // header: ["Funnel Sans", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
