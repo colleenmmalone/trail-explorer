@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=Merriweather:wght@400;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 20% 96%;
+    --foreground: 30 15% 15%;
+
+    --card: 40 25% 94%;
+    --card-foreground: 30 15% 15%;
+
+    --popover: 40 20% 96%;
+    --popover-foreground: 30 15% 15%;
+
+    --primary: 145 35% 32%;
+    --primary-foreground: 40 30% 96%;
+
+    --secondary: 270 18% 45%;
+    --secondary-foreground: 40 30% 96%;
+
+    --muted: 35 15% 88%;
+    --muted-foreground: 30 10% 45%;
+
+    --accent: 30 40% 40%;
+    --accent-foreground: 40 30% 96%;
+
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 40 30% 96%;
+
+    --border: 35 18% 82%;
+    --input: 35 18% 82%;
+    --ring: 145 35% 32%;
+
+    --radius: 0.625rem;
+
+    --sidebar-background: 145 25% 20%;
+    --sidebar-foreground: 40 20% 92%;
+    --sidebar-primary: 145 35% 42%;
+    --sidebar-primary-foreground: 40 30% 96%;
+    --sidebar-accent: 145 20% 28%;
+    --sidebar-accent-foreground: 40 20% 92%;
+    --sidebar-border: 145 18% 30%;
+    --sidebar-ring: 145 35% 42%;
+
+    --trail-green: 145 35% 32%;
+    --trail-purple: 270 18% 45%;
+    --trail-brown: 30 40% 40%;
+    --trail-gray: 30 8% 60%;
+  }
+
+  .dark {
+    --background: 30 12% 10%;
+    --foreground: 40 20% 90%;
+
+    --card: 30 12% 14%;
+    --card-foreground: 40 20% 90%;
+
+    --popover: 30 12% 14%;
+    --popover-foreground: 40 20% 90%;
+
+    --primary: 145 35% 42%;
+    --primary-foreground: 30 12% 10%;
+
+    --secondary: 270 18% 55%;
+    --secondary-foreground: 30 12% 10%;
+
+    --muted: 30 10% 20%;
+    --muted-foreground: 30 10% 55%;
+
+    --accent: 30 40% 50%;
+    --accent-foreground: 30 12% 10%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 40 20% 90%;
+
+    --border: 30 10% 22%;
+    --input: 30 10% 22%;
+    --ring: 145 35% 42%;
+
+    --sidebar-background: 30 12% 8%;
+    --sidebar-foreground: 40 20% 90%;
+    --sidebar-primary: 145 35% 42%;
+    --sidebar-primary-foreground: 30 12% 10%;
+    --sidebar-accent: 30 10% 15%;
+    --sidebar-accent-foreground: 40 20% 90%;
+    --sidebar-border: 30 10% 18%;
+    --sidebar-ring: 145 35% 42%;
+
+    --trail-green: 145 35% 42%;
+    --trail-purple: 270 18% 55%;
+    --trail-brown: 30 40% 50%;
+    --trail-gray: 30 8% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
