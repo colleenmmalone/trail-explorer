@@ -17,9 +17,9 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 border-b bg-card/90 backdrop-blur supports-[backdrop-filter]:bg-card/70">
       <div className="container flex h-14 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 font-display text-lg font-bold text-primary">
+        <Link to="/" className="flex items-center gap-2 font-display text-3xl text-primary">
           <Mountain className="h-6 w-6" />
-          <span className="hidden sm:inline">Trail Explorer</span>
+          <span className="hidden sm:inline">pebl</span>
         </Link>
 
         {/* Desktop nav */}

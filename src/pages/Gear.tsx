@@ -53,53 +53,53 @@ const Gear = () => (
     <MountainBackground />
     <div className="relative z-10 container max-w-5xl">
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-display font-bold text-foreground mb-2">
+        <h1 className="text-4xl font-header font-bold text-foreground mb-2">
           Hiking Gear Partners
         </h1>
-        <p className="text-muted-foreground max-w-md mx-auto">
+        <p className="text-lg text-muted-foreground max-w-lg mx-auto">
           Trusted brands we collaborate with to keep you trail-ready.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {brands.map((brand) => {
-          const Icon = brand.icon;
-          return (
-            <Card
-              key={brand.name}
-              className="bg-card/90 backdrop-blur hover:shadow-md transition-shadow"
-            >
-              <CardHeader className="flex-row items-center gap-3 pb-2">
-                <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-primary/10">
-                  <Icon className="h-5 w-5 text-primary" />
-                </div>
-                <div>
-                  <CardTitle className="text-sm font-display">
-                    {brand.name}
-                  </CardTitle>
-                  <p className="text-xs text-muted-foreground">{brand.category}</p>
-                </div>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <p className="text-xs text-muted-foreground mb-2">
-                  {brand.description}
-                </p>
-                <div className="flex gap-1">
-                  {brand.tags.map((tag) => (
-                    <Badge
-                      key={tag}
-                      variant="secondary"
-                      className="text-[10px] px-1.5 py-0"
-                    >
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          );
-        })}
-      </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {brands.map((brand) => {
+            const Icon = brand.icon;
+            return (
+              <Card
+                key={brand.name}
+                className="bg-card/90 hover:shadow-lg transition-shadow flex flex-col"
+              >
+                <CardHeader className="flex-row items-center gap-3 pb-3">
+                  <div className="flex items-center justify-center h-11 w-11 rounded-lg bg-primary/15">
+                    <Icon className="h-7 w-7 text-primary" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg leading-tight">
+                      {brand.name}
+                    </CardTitle>
+                    <p className="text-sm text-muted-foreground leading-tight">{brand.category}</p>
+                  </div>
+                </CardHeader>
+                <CardContent className="pt-0 pb-1 flex flex-1 flex-col justify-between">
+                  <p className="text-md text-foreground/80 mb-3">
+                    {brand.description}
+                  </p>
+                  <div className="flex gap-1">
+                    {brand.tags.map((tag) => (
+                      <Badge
+                        key={tag}
+                        variant="secondary"
+                        className=" text-[12px] px-2 py-0"
+                      >
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
     </div>
   </div>
 );
