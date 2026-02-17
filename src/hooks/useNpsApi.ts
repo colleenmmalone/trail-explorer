@@ -30,8 +30,8 @@ export function useParks(apiKey: string) {
     queryKey: ["parks", apiKey],
     queryFn: async () => {
       const res = await fetch(
-// &stateCode=va
-// parks
+        // &stateCode=va
+        // parks
         `https://developer.nps.gov/api/v1/parks?limit=50&api_key=${apiKey}`
         // `https://developer.nps.gov/api/v1/people?api_key=${apiKey}`
       );
@@ -42,6 +42,24 @@ export function useParks(apiKey: string) {
       );
     },
     enabled: !!apiKey,
+    staleTime: 1000 * 60 * 10,
+  });
+}
+
+export function singlePark(props: {apiKey: string, parkID: string}) {
+  return useQuery<NpsPark[]>({
+    queryKey: ["parks", props.apiKey],
+    queryFn: async () => {
+      const res = await fetch(
+        `https://developer.nps.gov/api/v1/parks?id=${props.parkID}&api_key=${props.apiKey}`
+      );
+      if (!res.ok) throw new Error("Failed to fetch parks");
+      const data: NpsResponse = await res.json();
+      return data.data.filter(
+        (p) => p.latitude && p.longitude && parseFloat(p.latitude) !== 0
+      );
+    },
+    enabled: !!props.apiKey,
     staleTime: 1000 * 60 * 10,
   });
 }
