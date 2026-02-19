@@ -9,6 +9,7 @@ import Settings from "./pages/Settings";
 import Gear from "./pages/Gear";
 import Styles from "./pages/Styles";
 import NotFound from "./pages/NotFound";
+import ParkDetail from "./pages/ParkDetail";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/settings" element={<Settings />} />
           <Route path="/gear" element={<Gear />} />
           <Route path="/styles" element={<Styles />} />
+          <Route path="/park/:id" element={<ParkDetail />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

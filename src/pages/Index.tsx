@@ -68,7 +68,7 @@ const Index = () => {
 
       {/* Trail List */}
       <div className="relative z-10 lg:w-96">
-        <h2 className="font-display font-bold text-lg mb-3 text-foreground">
+        <h2 className="font-header font-bold text-lg mb-3 text-foreground">
           Parks & Trails ({parks.length})
         </h2>
         <ScrollArea className="h-[calc(100vh-10rem)]">
