@@ -13,13 +13,13 @@ interface TrailCardProps {
 const TrailCard = ({ park, isSelected, onSelect }: TrailCardProps) => (
   <Card
     className={cn(
-      "border border-border border-1 cursor-pointer transition-all hover:shadow-md p-0",
+      "cursor-pointer transition-all hover:shadow-md",
       isSelected && "ring-2 ring-primary shadow-md"
     )}
     onClick={() => onSelect(park.id)}
   >
     {park.images?.[0] && (
-      <div className="h-36 mb-3">
+      <div className="h-36 overflow-hidden rounded-t-lg">
         <img
           src={park.images[0].url}
           alt={park.images[0].altText || park.fullName}
@@ -28,7 +28,7 @@ const TrailCard = ({ park, isSelected, onSelect }: TrailCardProps) => (
         />
       </div>
     )}
-    <CardHeader className="pb-2 px-4">
+    <CardHeader className="pb-2">
       <CardTitle className="text-base font-display leading-tight">
         {park.fullName}
       </CardTitle>
@@ -37,7 +37,7 @@ const TrailCard = ({ park, isSelected, onSelect }: TrailCardProps) => (
         {park.states}
       </div>
     </CardHeader>
-    <CardContent className="pt-0 pb-4 px-4">
+    <CardContent className="pt-0">
       <p className="text-xs text-muted-foreground line-clamp-3 mb-2">
         {park.description}
       </p>

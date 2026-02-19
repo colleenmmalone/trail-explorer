@@ -19,19 +19,29 @@ interface TrailMapProps {
   parks: NpsPark[];
   selectedId: string | null;
   onSelect: (id: string) => void;
+  onBoundsChange?: (bounds: L.LatLngBounds) => void;
 }
 
-const TrailMap = ({ parks, selectedId, onSelect }: TrailMapProps) => {
+const TrailMap = ({ parks, selectedId, onSelect, onBoundsChange }: TrailMapProps) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstance = useRef<L.Map | null>(null);
   const markersRef = useRef<Record<string, L.Marker>>({});
+  const onBoundsChangeRef = useRef(onBoundsChange);
+  onBoundsChangeRef.current = onBoundsChange;
 
   useEffect(() => {
     if (!mapRef.current || mapInstance.current) return;
-    mapInstance.current = L.map(mapRef.current).setView([39.5, -98.35], 4);
+    const map = L.map(mapRef.current).setView([39.5, -98.35], 4);
+    mapInstance.current = map;
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    }).addTo(mapInstance.current);
+    }).addTo(map);
+
+        const emitBounds = () => onBoundsChangeRef.current?.(map.getBounds());
+    map.on("moveend", emitBounds);
+    map.on("zoomend", emitBounds);
+    // Emit initial bounds after map is ready
+    map.whenReady(() => setTimeout(() => emitBounds(), 100));
 
     return () => {
       mapInstance.current?.remove();
@@ -53,7 +63,7 @@ const TrailMap = ({ parks, selectedId, onSelect }: TrailMapProps) => {
       const marker = L.marker([lat, lng])
         .addTo(map)
         // TODO add link to open park in new page with more details
-        .bindPopup(`<strong>${park.fullName}</strong><br/>${park.states}<br/><a href="https://www.nps.gov/${park.parkCode}" target="_blank">View Details</a>`);
+        .bindPopup(`<strong>${park.fullName}</strong><br/>${park.states}<br/><a href="/park/${park.id}" target="_blank">View Details</a>`);
       marker.on("click", () => onSelect(park.id));
       markersRef.current[park.id] = marker;
     });
