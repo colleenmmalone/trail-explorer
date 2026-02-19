@@ -4,14 +4,12 @@ import "leaflet/dist/leaflet.css";
 import type { NpsPark } from "@/hooks/useNpsApi";
 
 // Fix default marker icons
-import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
-import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerIcon2x from "@/assets/map-pointer.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: markerIcon2x,
-  iconUrl: markerIcon,
   shadowUrl: markerShadow,
 });
 
@@ -82,7 +80,7 @@ const TrailMap = ({ parks, selectedId, onSelect, onBoundsChange }: TrailMapProps
   return (
     <div
       ref={mapRef}
-      className="w-full h-[400px] lg:h-full rounded-lg border overflow-hidden"
+      className="w-full h-[380px] lg:h-full rounded-lg border overflow-hidden"
     />
   );
 };

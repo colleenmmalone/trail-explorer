@@ -15,7 +15,7 @@ const Index = () => {
   const [apiKey, setApiKey] = useState(getKey);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [mapBounds, setMapBounds] = useState<L.LatLngBounds | null>(null);
-  const [filterByView, setFilterByView] = useState(false);
+  const [filterByView, setFilterByView] = useState(true);
   const { data: parks = [], isLoading, error } = useParks(apiKey);
 
   // Re-check key when returning from settings
@@ -80,10 +80,7 @@ const Index = () => {
     <div className="relative flex flex-col p-4 min-h-[calc(100vh-3.5rem)] gap-4">
       <MountainBackground />
 
-      {/* Featured Park */}
-      {!isLoading && !error && parks.length > 0 && (
-        <FeaturedPark parks={parks} onSelect={handleSelect} />
-      )}
+
 
       <div className="relative flex flex-col lg:flex-row gap-4 flex-1">
       {/* Map */}
@@ -103,7 +100,7 @@ const Index = () => {
       </div>
 
       {/* Trail List */}
-      <div className="relative z-10 lg:w-96">
+      <div className="relative z-10 lg:w-[30%]">
         <div className="flex items-center justify-between mb-3">
           <h2 className="font-display font-bold text-lg text-foreground">
             Parks & Trails
@@ -172,6 +169,11 @@ const Index = () => {
         <></>}
       </div>
       </div>
+
+            {/* Featured Park */}
+      {!isLoading && !error && parks.length > 0 && (
+        <FeaturedPark parks={parks} onSelect={handleSelect} />
+      )}
     </div>
   );
 };

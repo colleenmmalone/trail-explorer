@@ -19,7 +19,7 @@ const FeaturedPark = ({ parks, onSelect }: FeaturedParkProps) => {
   if (!featured) return null;
 
   return (
-    <div className="relative z-10 w-full mb-4">
+    <div className="relative z-10 w-full max-w-4xl mx-auto mb-4">
       <div className="flex items-center gap-2 mb-2">
         <Star className="h-4 w-4 text-accent fill-accent" />
         <span className="text-xs font-semibold uppercase tracking-widest text-accent">
