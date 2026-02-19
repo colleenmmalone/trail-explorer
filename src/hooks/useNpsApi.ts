@@ -32,7 +32,7 @@ export function useParks(apiKey: string) {
       const res = await fetch(
         // &stateCode=va
         // parks
-        `https://developer.nps.gov/api/v1/parks?limit=50&api_key=${apiKey}`
+        `https://developer.nps.gov/api/v1/parks?limit=500&api_key=${apiKey}`
         // `https://developer.nps.gov/api/v1/people?api_key=${apiKey}`
       );
       if (!res.ok) throw new Error("Failed to fetch parks");
