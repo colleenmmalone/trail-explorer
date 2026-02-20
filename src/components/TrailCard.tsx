@@ -26,15 +26,16 @@ const TrailCard = ({ park, isSelected, onSelect }: TrailCardProps) => (
           className="w-full h-full object-cover"
           loading="lazy"
         />
-        <p className="absolute -bottom-2 sm:bottom-2 left-0 w-full text-center bg-secondary sm:bg-transparent sm:bg-gradient-to-r from-secondary/40 via-secondary to-secondary/40 text-white text-xs px-2 py-1">
+        <p className="absolute -bottom-2 sm:bottom-2 left-0 w-full text-center bg-secondary text-white text-xs px-2 py-2">
           <CardTitle className="text-base font-sans text-xl">
             {park.fullName}
           </CardTitle>
+          <div className="absolute group -top-8 left-2 text-secondary bg-background border-secondary border-2 p-2 rounded-full hidden sm:flex items-center gap-1 text-sm ">
+            <MapPin className="h-5 w-5" />
+            <span className="hidden group-hover:flex">{park.states.replace(/,\s*/g, ', ')}&nbsp;</span>
+          </div>
         </p>
-        <div className="absolute group top-2 left-2 bg-secondary text-background p-2 rounded-full hidden sm:flex items-center gap-1 text-sm ">
-          <MapPin className="h-5 w-5" />
-          <span className="hidden group-hover:flex">{park.states.replace(/,\s*/g, ', ')}&nbsp;</span>
-        </div>
+
       </div>
     )}
 

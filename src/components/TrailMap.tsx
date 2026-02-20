@@ -4,12 +4,14 @@ import "leaflet/dist/leaflet.css";
 import type { NpsPark } from "@/hooks/useNpsApi";
 
 // Fix default marker icons
-import markerIcon2x from "@/assets/map-pointer.png";
+import markerIcon2x from "@/assets/pebl-marker.png";
+import markerIcon from "@/assets/pebl-marker.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
   shadowUrl: markerShadow,
 });
 

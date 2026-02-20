@@ -86,7 +86,7 @@ const Index = () => {
       {/* Map */}
       <div className="relative z-10 lg:flex-1 min-h-[400px]">
         {isLoading ? (
-          <div className="flex items-center justify-center h-full rounded-lg border bg-card/80">
+          <div className="flex items-center justify-center h-full p-8">
             <Loader2 className="h-8 w-8 animate-spin text-primary" />
           </div>
         ) : error ? (
