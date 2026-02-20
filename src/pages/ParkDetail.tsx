@@ -4,6 +4,7 @@ import { singlePark, useApiKey } from "@/hooks/useNpsApi";
 import MountainBackground from "@/components/MountainBackground";
 import { Button } from "@/components/ui/button";
 import { AlertTriangle, Loader2, Mountain, Settings } from "lucide-react";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   const { getKey } = useApiKey();
@@ -43,71 +44,88 @@ const Index = () => {
   }
 
   return (
-    <div className="relative flex flex-col justify-center lg:flex-row gap-4 p-4 min-h-[calc(100vh-3.5rem)]">
-      <MountainBackground />
+    <div className={`relative flex flex-col justify-center pt-8 max-h-[100vh] overflow-auto bg-background`}>
 
-      {isLoading ? (
-        <div className="flex items-center justify-center h-full rounded-lg border bg-card/80">
-          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      {park[0]?.images[0]?.url ?
+        <div className="hidden sm:block fixed inset-0 object-cover z-0 pointer-events-none overflow-hidden">
+          <img src={park[0]?.images[1]?.url} alt={park[0]?.images[1]?.altText || "Park Image"} />
         </div>
-      ) : error ? (
-        <div className="flex flex-col items-center justify-center h-full rounded-lg border bg-card/80 gap-2">
-          <AlertTriangle className="h-8 w-8 text-destructive" />
-          <p className="text-sm text-muted-foreground">Failed to load trails. Check your API key.</p>
-        </div>
-      ) : (
-        <div className="relative z-10 lg:w-96">
-          <h2 className="font-header font-bold text-lg mb-3 text-foreground">
-            Enjoy this park: {park[0]?.fullName || "Unknown Park"}
-          </h2>
-          <p>
-            {park[0]?.description || "No description available."}
-          </p>
+        :
+        <MountainBackground />
+      }
 
-          <p className="mt-3 flex flex-wrap gap-2 items-center">
-            {park[0]?.activities?.slice(0, 4).map((activity, i) => (
-              <span
-                key={`${activity.name}-${i}`}
-                className="inline-flex items-center rounded-full bg-muted px-2 py-1 text-xs font-medium text-foreground/90"
-              >
-                {activity.name}
-              </span>
-            ))}
+      {
+        isLoading ? (
+          <div className="flex items-center justify-center h-[100vh] overflow-y-auto p-8">
+            <Loader2 className="h-8 w-8 animate-spin text-primary" />
+          </div>
+        ) : error ? (
+          <div className="flex flex-col items-center justify-center h-full rounded-lg border bg-card/80 gap-2">
+            <AlertTriangle className="h-8 w-8 text-destructive" />
+            <p className="text-sm text-muted-foreground">Failed to load trails. Check your API key.</p>
+          </div>
+        ) : (
+          <div className="p-0 inset-0 w-full flex justify-center items-start flex-col">
+            <div className="h-full z-10 lg:max-w-3xl pb-10 mx-auto">
+              <div className="flex flex-col gap-2 bg-background border-secondary border-2 p-4">
 
-            {park[0]?.activities && park[0].activities.length > 4 && (
-              <span className="text-sm text-muted-foreground">
-                +{park[0].activities.length - 4} more
-              </span>
-            )}
+                {/* park name  */}
+                <h2 className="font-header font-bold text-lg text-foreground">
+                  {park[0]?.fullName || "Unknown Park"}
+                </h2>
 
-          </p>
-          <p>
-         
-                  {park[0]?.addresses ? 
-            `${park[0]?.addresses[0].city}, ${park[0]?.addresses[0].stateCode}`
-            : "Location not available"}
-          </p>
+                {/* city, state  */}
+                <p className="text-sm text-foreground/70">
+                  {park[0]?.addresses?.[0] ?
+                    `${park[0]?.addresses?.[0]?.city}, ${park[0]?.addresses?.[0]?.stateCode}`
+                    : "Location not available"}
+                </p>
+                <p>
+                  {park[0]?.description || "No description available."}
+                </p>
 
-          <a href={park[0]?.url} target="_blank" rel="noopener noreferrer" className="text-primary mt-4 inline-block">
-            Visit Official Site
-          </a>
+                <p className="mt-3 flex flex-wrap gap-2 items-center">
+                  {park[0]?.activities?.slice(0, 5).map((activity, i) => (
+                    <span
+                      key={`${activity.name}-${i}`}
+                      className="inline-flex items-center rounded-full bg-muted px-2 py-1 text-xs font-medium text-foreground/90"
+                    >
+                      {activity.name}
+                    </span>
+                  ))}
 
-          <img src={park[0]?.images[0]?.url} alt={park[0]?.images[0]?.altText || "Park Image"} className="mt-4 rounded-lg border" />
+                  {park[0]?.activities && park[0].activities.length > 5 && (
+                    <span className="text-sm text-muted-foreground">
+                      +{park[0].activities.length - 5} more
+                    </span>
+                  )}
 
-              {park[0]?.images?.slice(1, park[0].images.length - 1).map((image, i) => (
-                <div
-                  key={`image-${i}`}
-                  className="inline-flex items-center rounded-full bg-muted px-2 py-1 text-xs font-medium text-foreground/90"
-                >
-                  <img src={image.url} alt={image.altText || "Park Image"} className="mt-4 rounded-lg border" />
-                </div>
-              ))}
-        </div>
-      )}
+                </p>
 
 
+                <a href={park[0]?.url} target="_blank" rel="noopener noreferrer" className="text-primary mt-4 inline-block">
+                  Visit Official Site
+                </a>
+              </div>
+              <div className="max-w-xl mx-auto">
+                {park[0]?.images?.map((image, i) => (
+                  <div
+                    key={`image-${i}`}
+                    className="inline-flex items-center"
+                  >
+                    <img src={image.url} alt={image.altText || "Park Image"} className="mt-4 border-2 border-secondary shadow-xl" />
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* <Footer /> */}
+          </div>
+        )
+      }
 
-    </div>
+
+
+    </div >
   );
 };
 
