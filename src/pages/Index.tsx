@@ -25,7 +25,7 @@ const Index = () => {
     return () => window.removeEventListener("focus", handleFocus);
   }, [getKey]);
 
-  const handleSelect = useCallback((id: string) => setSelectedId(id), []);
+  const handleSelect = useCallback((parkCode: string) => setSelectedId(parkCode), []);
   const handleBoundsChange = useCallback((bounds: L.LatLngBounds) => setMapBounds(bounds), []);
 
   const visibleParks = useMemo(() => {
@@ -33,6 +33,7 @@ const Index = () => {
     return parks.filter((p) => {
       const lat = parseFloat(p.latitude);
       const lng = parseFloat(p.longitude);
+      console.log('parks',parks)
       return mapBounds.contains([lat, lng]);
     });
   }, [parks, mapBounds, filterByView]);
@@ -124,9 +125,9 @@ const Index = () => {
           <div className="space-y-3 pr-3">
             {paginatedParks.map((park) => (
               <TrailCard
-                key={park.id}
+                key={park.parkCode}
                 park={park}
-                isSelected={selectedId === park.id}
+                isSelected={selectedId === park.parkCode}
                 onSelect={handleSelect}
               />
             ))}

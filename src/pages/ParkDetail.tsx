@@ -9,8 +9,8 @@ import Footer from "@/components/Footer";
 const Index = () => {
   const { getKey } = useApiKey();
   const [apiKey, setApiKey] = useState(getKey);
-  const parkID = window.location.pathname.split("/park/")[1] || "";
-  const { data: park = [], isLoading, error } = singlePark({ apiKey, parkID });
+  const parkCode = window.location.pathname.split("/park/")[1] || "";
+  const { data: park = [], isLoading, error } = singlePark({ apiKey, parkCode });
   console.log("Park data:", park[0]);
 
   // Re-check key when returning from settings
@@ -48,7 +48,7 @@ const Index = () => {
 
       {park[0]?.images[0]?.url ?
         <div className="hidden sm:block fixed inset-0 object-cover z-0 pointer-events-none overflow-hidden">
-          <img src={park[0]?.images[1]?.url} alt={park[0]?.images[1]?.altText || "Park Image"} />
+          <img src={park[0]?.images[1]?.url} alt={park[0]?.images[1]?.altText || "Park Image"} className="w-full h-full object-cover" />
         </div>
         :
         <MountainBackground />
@@ -113,7 +113,7 @@ const Index = () => {
                     key={`image-${i}`}
                     className="inline-flex items-center"
                   >
-                    <img src={image.url} alt={image.altText || "Park Image"} className="mt-4 border-2 border-secondary shadow-xl" />
+                    <img src={image.url} alt={image.altText || "Park Image"} className="mt-4 border-2 border-secondary shadow-xl w-full" />
                   </div>
                 ))}
               </div>
