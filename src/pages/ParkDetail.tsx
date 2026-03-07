@@ -3,8 +3,15 @@ import { Link } from "react-router-dom";
 import { singlePark, useApiKey } from "@/hooks/useNpsApi";
 import MountainBackground from "@/components/MountainBackground";
 import { Button } from "@/components/ui/button";
-import { AlertTriangle, Loader2, Mountain, Settings } from "lucide-react";
+import { AlertTriangle, Images, Loader2, Mountain, Settings } from "lucide-react";
 import Footer from "@/components/Footer";
+
+/* TODO
+ lazy load Images
+ desktop image view as gallery
+ click to see fullsize image
+ use random image as background instead of 2nd
+*/ 
 
 const Index = () => {
   const { getKey } = useApiKey();

@@ -1,5 +1,12 @@
 import { Mountain } from "lucide-react";
 
+/* TODO
+add about me links
+NPS logo
+tagline about NPS API
+
+*/
+
 const Footer = () => (
   <>
   {/* mountains  */}

@@ -10,6 +10,16 @@ import { Mountain, Settings, Loader2, AlertTriangle, Map } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import L from "leaflet";
 
+/*
+TODO
+loads extrememly slow, feels clunky
+must paginate! 25/page max
+sometimes paginate doesn't show up
+add filters: state
+reset map button
+
+*/
+
 const Index = () => {
   const { getKey } = useApiKey();
   const [apiKey, setApiKey] = useState(getKey);
