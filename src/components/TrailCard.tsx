@@ -4,6 +4,12 @@ import { Badge } from "@/components/ui/badge";
 import { MapPin } from "lucide-react";
 import type { NpsPark } from "@/hooks/useNpsApi";
 
+/*
+kinda ugly
+want to slowly expand states on hover
+w-0 opacity-0 => w-auto? opacity-100 in transition
+*/
+
 interface TrailCardProps {
   park: NpsPark;
   isSelected: boolean;

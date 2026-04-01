@@ -46,12 +46,12 @@ export function useParks(apiKey: string) {
   });
 }
 
-export function singlePark(props: {apiKey: string, parkID: string}) {
+export function singlePark(props: {apiKey: string, parkCode: string}) {
   return useQuery<NpsPark[]>({
     queryKey: ["parks", props.apiKey],
     queryFn: async () => {
       const res = await fetch(
-        `https://developer.nps.gov/api/v1/parks?id=${props.parkID}&api_key=${props.apiKey}`
+        `https://developer.nps.gov/api/v1/parks?parkCode=${props.parkCode}&api_key=${props.apiKey}`
       );
       if (!res.ok) throw new Error("Failed to fetch parks");
       const data: NpsResponse = await res.json();

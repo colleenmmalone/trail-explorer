@@ -10,6 +10,16 @@ import { Mountain, Settings, Loader2, AlertTriangle, Map } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import L from "leaflet";
 
+/*
+TODO
+loads extrememly slow, feels clunky
+must paginate! 25/page max
+sometimes paginate doesn't show up
+add filters: state
+reset map button
+
+*/
+
 const Index = () => {
   const { getKey } = useApiKey();
   const [apiKey, setApiKey] = useState(getKey);
@@ -25,7 +35,7 @@ const Index = () => {
     return () => window.removeEventListener("focus", handleFocus);
   }, [getKey]);
 
-  const handleSelect = useCallback((id: string) => setSelectedId(id), []);
+  const handleSelect = useCallback((parkCode: string) => setSelectedId(parkCode), []);
   const handleBoundsChange = useCallback((bounds: L.LatLngBounds) => setMapBounds(bounds), []);
 
   const visibleParks = useMemo(() => {
@@ -33,6 +43,7 @@ const Index = () => {
     return parks.filter((p) => {
       const lat = parseFloat(p.latitude);
       const lng = parseFloat(p.longitude);
+      console.log('parks',parks)
       return mapBounds.contains([lat, lng]);
     });
   }, [parks, mapBounds, filterByView]);
@@ -124,9 +135,9 @@ const Index = () => {
           <div className="space-y-3 pr-3">
             {paginatedParks.map((park) => (
               <TrailCard
-                key={park.id}
+                key={park.parkCode}
                 park={park}
-                isSelected={selectedId === park.id}
+                isSelected={selectedId === park.parkCode}
                 onSelect={handleSelect}
               />
             ))}

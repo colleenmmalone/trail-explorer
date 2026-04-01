@@ -18,7 +18,7 @@ L.Icon.Default.mergeOptions({
 interface TrailMapProps {
   parks: NpsPark[];
   selectedId: string | null;
-  onSelect: (id: string) => void;
+  onSelect: (parkCode: string) => void;
   onBoundsChange?: (bounds: L.LatLngBounds) => void;
 }
 
@@ -63,9 +63,9 @@ const TrailMap = ({ parks, selectedId, onSelect, onBoundsChange }: TrailMapProps
       const marker = L.marker([lat, lng])
         .addTo(map)
         // TODO add link to open park in new page with more details
-        .bindPopup(`<strong>${park.fullName}</strong><br/>${park.states}<br/><a href="/park/${park.id}" target="_blank">View Details</a>`);
-      marker.on("click", () => onSelect(park.id));
-      markersRef.current[park.id] = marker;
+        .bindPopup(`<strong>${park.fullName}</strong><br/>${park.states}<br/><a href="/park/${park.parkCode}" target="_blank">View Details</a>`);
+      marker.on("click", () => onSelect(park.parkCode));
+      markersRef.current[park.parkCode] = marker;
     });
   }, [parks, onSelect]);
 
