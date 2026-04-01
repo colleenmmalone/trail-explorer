@@ -7,43 +7,45 @@
 
 @layer base {
   :root {
-
-    --trail-green: 146 43% 25%; /* #245B3C pine teal */
-    --trail-purple: 270 20% 31%; /* #534462 vintage grape */
-    --trail-brown: 30 40% 40%; /* #7E5C3A olive wood*/
-    --trail-gray: 30 8% 60%; /* #a19991 grey olive*/
-    --trail-celadon: 151 34% 79%; /* #b6dbc9 celadon */
-    --trail-light: 60 100% 99%; /* ##FFFBF5 floral white */
-    --trail-dark: 44 38% 6%; /* #141109 pitch black */
-    --trail-red: 0 61% 40%; /* #141109 brown red */
+    --trail-bark: 25 37% 17%; /* #3B2A1A bark - foreground */
+    --trail-fog: 35 32% 93%; /* #F2EDE6 fog - page background */
+    --trail-moss: 120 25% 24%; /* #2D4A2D moss */
+    --trail-moss-light: 120 25% 40%; /* #4A7A4A moss light */
+    --trail-lichen: 102 21% 52%; /* #7A9E6A lichen */
+    --trail-terracotta: 26 47% 53%; /* #C4834A terracotta */
+    --trail-chalk: 36 40% 97%; /* #FAF7F2 chalk */
+    --trail-stone: 25 37% 17%; /* #E8E2D8 stone */
+    --trail-pebble: 40 22% 78%; /* #D4CCBC stone */
+    --trail-dusk: 276 20% 36%; /* #5C4A6E dusk purple */
+    --trail-red: 0 77% 27%; /* #7a1010 red */
     
-    --background: var(--trail-light);
-    --foreground: var(--trail-dark);
+    --background: var(--trail-fog);
+    --foreground: var(--trail-bark);
 
-    --card: var(--trail-light);
-    --card-foreground: var(--trail-dark);
-    --card-border: var(--trail-brown);
+    --card: var(--trail-chalk);
+    --card-foreground: var(--trail-bark);
+    --card-border: var(--trail-pebble);
 
     --popover: 40 20% 96%;
     --popover-foreground: 30 15% 15%;
 
-    --primary: var(--trail-green);
-    --primary-foreground: var(--trail-light);
+    --primary: var(--trail-moss);
+    --primary-foreground: var(--card);
 
-    --secondary: var(--trail-purple);
-    --secondary-foreground: var(--trail-light);
+    --secondary: var(--trail-dusk);
+    --secondary-foreground: var(--background);
 
-    --muted: 35 15% 88%; 
+    --muted: var(--trail-moss-light); 
     --muted-foreground: 44 30% 30%; 
 
-    --accent: var(--trail-brown);
-    --accent-foreground: var(--trail-light);
+    --accent: var(--trail-terracotta);
+    --accent-foreground: var(--card);
 
     --destructive: var(--trail-red);
-    --destructive-foreground: var(--trail-light);
+    --destructive-foreground: var(--card);
 
-    --border: 35 18% 82%;
-    --input: 35 18% 82%;
+    --border: var(--trail-pebble);
+    --input: var(--input-lichen)
     --ring: 145 35% 32%;
 
     --radius: 0.625rem;
@@ -60,50 +62,6 @@
 
   
   }
-
-  .dark {
-    --background: 30 12% 10%;
-    --foreground: 40 20% 90%;
-
-    --card: 30 12% 14%;
-    --card-foreground: 40 20% 90%;
-
-    --popover: 30 12% 14%;
-    --popover-foreground: 40 20% 90%;
-
-    --primary: 145 35% 42%;
-    --primary-foreground: 30 12% 10%;
-
-    --secondary: 270 18% 55%;
-    --secondary-foreground: 30 12% 10%;
-
-    --muted: 30 10% 20%;
-    --muted-foreground: 30 10% 55%;
-
-    --accent: 30 40% 50%;
-    --accent-foreground: 30 12% 10%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 40 20% 90%;
-
-    --border: 30 10% 22%;
-    --input: 30 10% 22%;
-    --ring: 145 35% 42%;
-
-    --sidebar-background: 30 12% 8%;
-    --sidebar-foreground: 40 20% 90%;
-    --sidebar-primary: 145 35% 42%;
-    --sidebar-primary-foreground: 30 12% 10%;
-    --sidebar-accent: 30 10% 15%;
-    --sidebar-accent-foreground: 40 20% 90%;
-    --sidebar-border: 30 10% 18%;
-    --sidebar-ring: 145 35% 42%;
-
-    --trail-green: 145 35% 42%;
-    --trail-purple: 270 18% 55%;
-    --trail-brown: 30 40% 50%;
-    --trail-gray: 30 8% 50%;
-  }
 }
 
 @layer base {
@@ -112,6 +70,6 @@
   }
 
   body {
-    @apply bg-trail-gray/35 text-foreground font-sans;
+    @apply bg-background text-foreground font-sans;
   }
 }

@@ -11,6 +11,7 @@ export interface NpsPark {
   images: { url: string; altText: string; title: string }[];
   activities: { id: string; name: string }[];
   designation: string;
+  parkCode: string;
 }
 
 interface NpsResponse {
@@ -37,9 +38,8 @@ export function useParks(apiKey: string) {
       );
       if (!res.ok) throw new Error("Failed to fetch parks");
       const data: NpsResponse = await res.json();
-      return data.data.filter(
-        (p) => p.latitude && p.longitude && parseFloat(p.latitude) !== 0
-      );
+      return data.data
+        .filter((p) => p.latitude && p.longitude && parseFloat(p.latitude) !== 0)
     },
     enabled: !!apiKey,
     staleTime: 1000 * 60 * 10,

@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Check, Trash2, ExternalLink, KeyRound } from "lucide-react";
-import MountainBackground from "@/components/MountainBackground";
 import { toast } from "sonner";
 
 const Settings = () => {
@@ -29,7 +28,6 @@ const Settings = () => {
 
   return (
     <div className="relative min-h-[80vh] flex items-start justify-center p-4 pt-12">
-      <MountainBackground />
       <Card className="relative z-10 w-full max-w-lg bg-card/95 backdrop-blur">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 font-display">

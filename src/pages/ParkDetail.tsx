@@ -1,7 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { singlePark, useApiKey } from "@/hooks/useNpsApi";
-import MountainBackground from "@/components/MountainBackground";
 import { Button } from "@/components/ui/button";
 import { AlertTriangle, Images, Loader2, Mountain, Settings } from "lucide-react";
 import Footer from "@/components/Footer";
@@ -30,7 +29,6 @@ const Index = () => {
   if (!apiKey) {
     return (
       <div className="relative flex flex-col items-center justify-center min-h-[80vh] text-center px-4">
-        <MountainBackground />
         <div className="relative z-10 space-y-6">
           <Mountain className="h-16 w-16 text-primary mx-auto" />
           <h1 className="text-4xl font-display font-bold text-foreground">
@@ -58,7 +56,7 @@ const Index = () => {
           <img src={park[0]?.images[1]?.url} alt={park[0]?.images[1]?.altText || "Park Image"} className="w-full h-full object-cover" />
         </div>
         :
-        <MountainBackground />
+        <></>
       }
 
       {
