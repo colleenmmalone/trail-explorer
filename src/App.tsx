@@ -10,6 +10,7 @@ import Gear from "./pages/Gear";
 import Styles from "./pages/Styles";
 import NotFound from "./pages/NotFound";
 import ParkDetail from "./pages/ParkDetail";
+import MountainBackground from "./components/MountainBackground";
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <MountainBackground />
       <BrowserRouter>
         <Navbar />
         <Routes>

@@ -62,7 +62,6 @@ const TrailMap = ({ parks, selectedId, onSelect, onBoundsChange }: TrailMapProps
       const lng = parseFloat(park.longitude);
       const marker = L.marker([lat, lng])
         .addTo(map)
-        // TODO add link to open park in new page with more details
         .bindPopup(`<strong>${park.fullName}</strong><br/>${park.states}<br/><a href="/park/${park.parkCode}" target="_blank">View Details</a>`);
       marker.on("click", () => onSelect(park.parkCode));
       markersRef.current[park.parkCode] = marker;
