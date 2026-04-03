@@ -27,10 +27,12 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          light: "hsl(var(--primary-light))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
+          light: "hsl(var(--secondary-light))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -53,10 +55,10 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         trail: {
-          green: "hsl(var(--trail-green))",
-          purple: "hsl(var(--trail-purple))",
-          brown: "hsl(var(--trail-brown))",
-          gray: "hsl(var(--trail-gray))",
+          green: "hsl(var(--trail-moss))",
+          purple: "hsl(var(--trail-dusk))",
+          brown: "hsl(var(--trail-bark))",
+          gray: "hsl(var(--trail-pebble))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",

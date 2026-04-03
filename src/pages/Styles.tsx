@@ -1,7 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Backpack, Footprints, Mountain, Compass, Tent, FlameKindling } from "lucide-react";
+import { Backpack, Footprints, Mountain, Compass, Tent, FlameKindling, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Callout } from "@/components/ui/callout";
 
 const brands = [
   {
@@ -79,7 +80,7 @@ export default function Styles() {
           </p>
         </div>
 
-{/* Buttons  */}
+        {/* Buttons  */}
         <div className="mb-8 mx-auto w-fit">
           <Button variant="default" className="mr-2 mb-2">
             Default Button
@@ -103,18 +104,21 @@ export default function Styles() {
           <Button variant="link" className="mr-2 mb-2">
             Link Button
           </Button>
+          <Button variant="icon" className="mr-2 mb-2">
+            <Mountain className="h-4 w-4" />
+          </Button>
         </div>
 
-{/* Styles  */}
+        {/* Styles  */}
         <div className="mb-8 gap-2 mx-auto w-fit bg-card border rounded-lg flex p-4">
           <Badge variant="default" className="">
-            Default 
+            Default
           </Badge>
           <Badge variant="dark" className="">
-            Dark 
+            Dark
           </Badge>
           <Badge variant="neutral" className="">
-            Neutral 
+            Neutral
           </Badge>
           <Badge variant="green" className="">
             Green
@@ -123,24 +127,33 @@ export default function Styles() {
             Purple
           </Badge>
           <Badge variant="brown" className="">
-             Brown 
+            Brown
           </Badge>
           <Badge variant="red" className="">
-             Red 
+            Red
           </Badge>
-
+        </div>
+        <div className=" group w-fit text-secondary bg-background border-secondary border-2 p-2 rounded-full hidden sm:flex items-center gap-1 text-sm ">
+          <MapPin className="h-5 w-5" />
+          <span className="hidden group-hover:flex">KY, TN</span>
         </div>
 
+        <div className="flex flex-col gap-4 py-4">
+          <Callout variant="purple" title="Free & Instant" description="Get your key at api.nps.gov — no credit card needed. Takes about 30 seconds." />
+          <Callout 
+          title="Free & Instant" 
+          description="You need a unique API key to access the National Park Service data. It's totally free and sent right to your inbox! As this app stores the key in your local storage, you may need to reenter it from time-to-time, so hold on to that email." />
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {brands.map((brand) => {
             const Icon = brand.icon;
             return (
               <Card
                 key={brand.name}
-                className="bg-card hover:shadow-lg transition-shadow flex flex-col"
+                className="bg-card rounded-lg hover:shadow-lg transition-shadow flex flex-col"
               >
                 <CardHeader className="flex-row items-center gap-3 pb-3">
-                  <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-primary/15">
+                  <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-primary-light">
                     <Icon className="h-5 w-5 text-primary" />
                   </div>
                   <div className="my-auto">
@@ -158,7 +171,7 @@ export default function Styles() {
                     {brand.tags.map((tag) => (
                       <Badge
                         key={tag}
-                        variant="outlinePurple"
+                        variant="purple"
                         className=" text-[12px] px-2 py-0"
                       >
                         {tag}

@@ -10,7 +10,8 @@
     --trail-bark: 25 37% 17%; /* #3B2A1A bark - foreground */
     --trail-fog: 35 32% 93%; /* #F2EDE6 fog - page background */
     --trail-moss: 120 25% 24%; /* #2D4A2D moss */
-    --trail-moss-light: 120 25% 40%; /* #4A7A4A moss light */
+    --trail-moss-medium: 120 25% 40%; /* #4A7A4A moss medium */
+    --trail-moss-light: 120 30% 88%; /* #d8ead8 moss light */
     --trail-lichen: 102 21% 52%; /* #7A9E6A lichen */
     --trail-terracotta: 26 47% 53%; /* #C4834A terracotta */
     --trail-chalk: 36 40% 97%; /* #FAF7F2 chalk */
@@ -31,11 +32,13 @@
 
     --primary: var(--trail-moss);
     --primary-foreground: var(--card);
+    --primary-light: var(--trail-moss-light);
 
     --secondary: var(--trail-dusk);
     --secondary-foreground: var(--background);
+    --secondary-light: 270 35% 91%;
 
-    --muted: var(--trail-moss-light); 
+    --muted: var(--trail-moss-medium); 
     --muted-foreground: 44 30% 30%; 
 
     --accent: var(--trail-terracotta);
@@ -45,8 +48,8 @@
     --destructive-foreground: var(--card);
 
     --border: var(--trail-pebble);
-    --input: var(--input-lichen)
-    --ring: 145 35% 32%;
+    --input: var(--trail-pebble);
+    --ring: var(--trail-lichen);
 
     --radius: 0.625rem;
 
@@ -58,9 +61,6 @@
     --sidebar-accent-foreground: 40 20% 92%;
     --sidebar-border: 145 18% 30%;
     --sidebar-ring: 145 35% 42%;
-
-
-  
   }
 }
 

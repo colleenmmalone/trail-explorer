@@ -13,12 +13,13 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: `${btn} ${btnFilled} bg-primary text-primary-foreground hover:bg-muted shadow-[#1a2e1a] hover:shadow-[#1a2e1a] active:shadow-[#1a2e1a]`,
-        destructive: `${btn} ${btnFilled} bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-[#510303] hover:shadow-[#510303] active:shadow-[#510303]`,
-        outline: `${btn} border border-primary/80 text-primary bg-background/30 hover:bg-primary/10  active:bg-primary/30`,
-        secondary: `${btn} ${btnFilled} bg-accent text-secondary-foreground hover:bg-accent/80 shadow-[#8a4a20] hover:shadow-[#8a4a20] active:shadow-[#8a4a20] `,
-        tertiary: `${btn} ${btnFilled} bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-[#2e1e42] hover:shadow-[#2e1e42] active:shadow-[#2e1e42]`,
-        ghost: `${btn} hover:bg-primary/15 active:bg-primary/30 `,
+        destructive: `${btn} ${btnFilled} bg-destructive text-destructive-foreground hover:bg-[#a12e30] shadow-[#510303] hover:shadow-[#510303] active:shadow-[#510303]`,
+        outline: `${btn} border border-primary/80 text-primary bg-card hover:bg-primary-light  active:bg-primary/30`,
+        secondary: `${btn} ${btnFilled} bg-accent text-secondary-foreground hover:bg-accent/85 shadow-[#8a4a20] hover:shadow-[#8a4a20] active:shadow-[#8a4a20] `,
+        tertiary: `${btn} ${btnFilled} bg-secondary text-secondary-foreground hover:bg-[#796091] shadow-[#2e1e42] hover:shadow-[#2e1e42] active:shadow-[#2e1e42]`,
+        ghost: `${btn} hover:bg-primary-light active:bg-primary/30 `,
         link: `${btn} text-primary underline-offset-4 hover:underline active:bg-primary/10`,
+        icon: `size-10 text-primary bg-primary-light active:bg-primary-medium rounded-full p-0 cursor-default`,
       },
       size: {
         default: "h-10 px-4 py-2",
