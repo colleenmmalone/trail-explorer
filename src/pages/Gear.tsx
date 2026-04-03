@@ -1,6 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import MountainBackground from "@/components/MountainBackground";
 import { Backpack, Footprints, Mountain, Compass, Tent, FlameKindling } from "lucide-react";
 
 const brands = [
@@ -50,7 +49,6 @@ const brands = [
 
 const Gear = () => (
   <div className="relative min-h-[80vh] p-4 pt-8">
-    <MountainBackground />
     <div className="relative z-10 container max-w-5xl">
       <div className="text-center mb-8">
         <h1 className="text-4xl font-header font-bold text-foreground mb-2">

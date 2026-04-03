@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Star, MapPin, ExternalLink } from "lucide-react";
-import type { NpsPark } from "@/hooks/useNpsApi";
+import type { NpsPark } from "@/lib/types";
 
 interface FeaturedParkProps {
   parks: NpsPark[];
@@ -31,7 +31,7 @@ const FeaturedPark = ({ parks, onSelect }: FeaturedParkProps) => {
           <div className="sm:w-56 h-44 sm:h-auto flex-shrink-0 overflow-hidden">
             <img
               src={featured.images[0].url}
-              alt={featured.images[0].altText || featured.fullName}
+              alt={featured.images[0].altText || featured.name}
               className="w-full h-full object-cover"
               loading="lazy"
             />
@@ -40,35 +40,35 @@ const FeaturedPark = ({ parks, onSelect }: FeaturedParkProps) => {
         <div className="flex flex-col justify-between p-4 flex-1 gap-3">
           <div>
             <h3 className="font-display font-bold text-lg text-foreground leading-tight mb-1">
-              {featured.fullName}
+              {featured.name}
             </h3>
             <div className="flex items-center gap-1 text-xs text-muted-foreground mb-2">
               <MapPin className="h-3 w-3" />
               {featured.states}
               {featured.designation && (
-                <Badge variant="outline" className="ml-2 text-[10px] px-1.5 py-0">
+                <Badge className="ml-2 text-[10px] px-1.5 py-0" variant="brown">
                   {featured.designation}
                 </Badge>
               )}
             </div>
-            <p className="text-sm text-muted-foreground line-clamp-3">
+            <p className="text-sm text-muted-foreground line-clamp-4">
               {featured.description}
             </p>
           </div>
           <div className="flex flex-wrap gap-2 items-center">
             <div className="flex flex-wrap gap-1 flex-1">
               {featured.activities.slice(0, 4).map((a) => (
-                <Badge key={a.id} variant="secondary" className="text-[10px] px-1.5 py-0">
+                <Badge key={a.id} variant="purple" className="text-[10px] px-1.5 py-0">
                   {a.name}
                 </Badge>
               ))}
             </div>
             <div className="flex gap-2">
-              <Button size="sm" variant="outline" onClick={() => onSelect(featured.id)}>
+              <Button size="sm" variant="outline" className="py-2" onClick={() => onSelect(featured.parkCode)}>
                 View on Map
               </Button>
               {featured.url && (
-                <Button size="sm" asChild>
+                <Button size="sm" asChild className="py-2">
                   <a href={featured.url} target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="h-3 w-3 mr-1" />
                     NPS Page

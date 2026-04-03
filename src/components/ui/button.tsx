@@ -4,17 +4,22 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
+const btn = "gap-[8px] py-[24px] px-[11px] rounded-md";
+const btnFilled = "shadow-[0_3px_0] hover:shadow-[0_5px_0] active:shadow-[0_1px_0] transition-all duration-200 hover:translate-y-[-2px] active:translate-y-[2px]";
+
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-sm text-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-accent/50 bg-background/30 hover:bg-accent hover:text-accent-foreground",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+        default: `${btn} ${btnFilled} bg-primary text-primary-foreground hover:bg-muted shadow-[#1a2e1a] hover:shadow-[#1a2e1a] active:shadow-[#1a2e1a]`,
+        destructive: `${btn} ${btnFilled} bg-destructive text-destructive-foreground hover:bg-[#a12e30] shadow-[#510303] hover:shadow-[#510303] active:shadow-[#510303]`,
+        outline: `${btn} border border-primary/80 text-primary bg-card hover:bg-primary-light  active:bg-primary/30`,
+        secondary: `${btn} ${btnFilled} bg-accent text-secondary-foreground hover:bg-accent/85 shadow-[#8a4a20] hover:shadow-[#8a4a20] active:shadow-[#8a4a20] `,
+        tertiary: `${btn} ${btnFilled} bg-secondary text-secondary-foreground hover:bg-[#796091] shadow-[#2e1e42] hover:shadow-[#2e1e42] active:shadow-[#2e1e42]`,
+        ghost: `${btn} hover:bg-primary-light active:bg-primary/30 `,
+        link: `${btn} text-primary underline-offset-4 hover:underline active:bg-primary/10`,
+        icon: `size-10 text-primary bg-primary-light active:bg-primary-medium rounded-full p-0 cursor-default`,
       },
       size: {
         default: "h-10 px-4 py-2",

@@ -1,22 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-
-export interface NpsPark {
-  id: string;
-  fullName: string;
-  description: string;
-  states: string;
-  latitude: string;
-  longitude: string;
-  url: string;
-  images: { url: string; altText: string; title: string }[];
-  activities: { id: string; name: string }[];
-  designation: string;
-}
-
-interface NpsResponse {
-  total: string;
-  data: NpsPark[];
-}
+import { NpsPark, NpsResponse } from "@/lib/types";
 
 export function useApiKey() {
   const getKey = () => localStorage.getItem("nps_api_key") || "";
@@ -37,9 +20,9 @@ export function useParks(apiKey: string) {
       );
       if (!res.ok) throw new Error("Failed to fetch parks");
       const data: NpsResponse = await res.json();
-      return data.data.filter(
-        (p) => p.latitude && p.longitude && parseFloat(p.latitude) !== 0
-      );
+      console.log("Fetched parks:", data.data[0]);
+      return data.data
+        .filter((p) => p.latitude && p.longitude && parseFloat(p.latitude) !== 0)
     },
     enabled: !!apiKey,
     staleTime: 1000 * 60 * 10,

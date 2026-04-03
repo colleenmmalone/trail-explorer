@@ -1,3 +1,4 @@
+
 import { Link, useLocation } from "react-router-dom";
 import { Mountain, Menu, X } from "lucide-react";
 import { useState } from "react";
@@ -6,7 +7,6 @@ import { Button } from "@/components/ui/button";
 
 const navLinks = [
   { to: "/", label: "Trails" },
-  { to: "/gear", label: "Gear" },
   { to: "/settings", label: "Settings" },
 ];
 
@@ -18,8 +18,8 @@ const Navbar = () => {
     <header className="sticky top-0 z-50 border-b bg-card/90 backdrop-blur supports-[backdrop-filter]:bg-card/70">
       <div className="container flex h-14 items-center justify-between">
         <Link to="/" className="flex items-center gap-2 font-display text-3xl text-primary">
-          <Mountain className="h-6 w-6" />
-          <span className="hidden sm:inline">pebl</span>
+          <Mountain className="h-6 w-6" fill="currentColor" />
+          <span className="inline">pebl</span>
         </Link>
 
         {/* Desktop nav */}
@@ -29,9 +29,9 @@ const Navbar = () => {
               key={link.to}
               to={link.to}
               className={cn(
-                "px-3 py-2 rounded-md text-sm font-medium transition-colors hover:bg-muted",
+                "px-3 py-2 rounded-md text-sm font-medium transition-colors hover:bg-primary hover:text-card",
                 location.pathname === link.to
-                  ? "text-primary bg-muted"
+                  ? "text-card bg-muted"
                   : "text-muted-foreground"
               )}
             >
