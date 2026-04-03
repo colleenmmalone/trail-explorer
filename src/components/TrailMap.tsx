@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import type { NpsPark } from "@/hooks/useNpsApi";
+import type { NpsPark } from "@/lib/types";
 
 // Fix default marker icons
 import markerIcon2x from "@/assets/pebl-marker.png";
@@ -20,9 +20,10 @@ interface TrailMapProps {
   selectedId: string | null;
   onSelect: (parkCode: string) => void;
   onBoundsChange?: (bounds: L.LatLngBounds) => void;
+  isLoading?: boolean;
 }
 
-const TrailMap = ({ parks, selectedId, onSelect, onBoundsChange }: TrailMapProps) => {
+const TrailMap = ({ parks, selectedId, onSelect, onBoundsChange, isLoading }: TrailMapProps) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstance = useRef<L.Map | null>(null);
   const markersRef = useRef<Record<string, L.Marker>>({});
@@ -62,7 +63,7 @@ const TrailMap = ({ parks, selectedId, onSelect, onBoundsChange }: TrailMapProps
       const lng = parseFloat(park.longitude);
       const marker = L.marker([lat, lng])
         .addTo(map)
-        .bindPopup(`<strong>${park.fullName}</strong><br/>${park.states}<br/><a href="/park/${park.parkCode}" target="_blank">View Details</a>`);
+        .bindPopup(`<strong>${park.name}</strong><br/>${park.states}<br/><a href="/park/${park.parkCode}" target="_blank">View Details</a>`);
       marker.on("click", () => onSelect(park.parkCode));
       markersRef.current[park.parkCode] = marker;
     });
@@ -73,7 +74,7 @@ const TrailMap = ({ parks, selectedId, onSelect, onBoundsChange }: TrailMapProps
     const marker = markersRef.current[selectedId];
     const map = mapInstance.current;
     if (map) {
-      map.setView(marker.getLatLng(), 7, { animate: true });
+      map.setView(marker.getLatLng(), 9, { animate: true });
       marker.openPopup();
     }
   }, [selectedId]);
